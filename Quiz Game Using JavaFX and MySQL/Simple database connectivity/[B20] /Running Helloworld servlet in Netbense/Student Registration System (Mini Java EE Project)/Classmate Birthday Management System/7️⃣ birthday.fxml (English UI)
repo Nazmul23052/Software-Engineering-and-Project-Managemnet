@@ -1,0 +1,27 @@
+<VBox spacing="10" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.birthday.BirthdayController">
+
+    <Label text="Classmate Birthday Management System"/>
+
+    <TextField fx:id="nameField" promptText="Enter Name"/>
+    <DatePicker fx:id="birthDatePicker"/>
+
+    <Button text="Add Birthday" onAction="#addBirthday"/>
+    <Button text="Update Birthday" onAction="#updateBirthday"/>
+    <Button text="Delete Birthday" onAction="#deleteBirthday"/>
+
+    <TextField fx:id="searchField" promptText="Search by Name or Month"/>
+    <Button text="Search" onAction="#search"/>
+
+    <TableView fx:id="table" prefHeight="250">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID"/>
+            <TableColumn fx:id="nameColumn" text="Name"/>
+            <TableColumn fx:id="dateColumn" text="Birth Date"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="notificationLabel"/>
+
+</VBox>
