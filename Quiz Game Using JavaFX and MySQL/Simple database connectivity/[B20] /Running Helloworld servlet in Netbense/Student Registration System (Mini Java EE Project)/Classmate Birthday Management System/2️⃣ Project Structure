@@ -1,0 +1,9 @@
+BirthdayApp/
+│
+├── module-info.java
+└── com/birthday/
+    ├── Main.java
+    ├── DBConnection.java
+    ├── BirthdayController.java
+    ├── Classmate.java
+    └── birthday.fxml
