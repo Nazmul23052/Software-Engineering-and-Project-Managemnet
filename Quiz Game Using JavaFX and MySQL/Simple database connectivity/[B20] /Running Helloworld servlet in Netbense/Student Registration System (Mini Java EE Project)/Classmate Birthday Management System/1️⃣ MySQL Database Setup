@@ -1,0 +1,7 @@
+CREATE DATABASE birthdaydb;
+USE birthdaydb;
+CREATE TABLE classmates (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    birthdate DATE NOT NULL
+);
