@@ -1,0 +1,83 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SimpleCalculator extends JFrame implements ActionListener {
+
+    JTextField t1, t2, t3;
+    JButton add, sub, mul, div;
+
+    public SimpleCalculator() {
+        setTitle("Simple Calculator");
+        setSize(350, 250);
+        setLayout(new GridLayout(5, 2, 10, 10));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Text Fields
+        t1 = new JTextField();
+        t2 = new JTextField();
+        t3 = new JTextField();
+        t3.setEditable(false);
+
+        // Buttons
+        add = new JButton("Add");
+        sub = new JButton("Subtract");
+        mul = new JButton("Multiply");
+        div = new JButton("Divide");
+
+        // Add action listener
+        add.addActionListener(this);
+        sub.addActionListener(this);
+        mul.addActionListener(this);
+        div.addActionListener(this);
+
+        // Add components
+        add(new JLabel("Number 1:"));
+        add(t1);
+        add(new JLabel("Number 2:"));
+        add(t2);
+
+        add(add);
+        add(sub);
+        add(mul);
+        add(div);
+
+        add(new JLabel("Result:"));
+        add(t3);
+
+        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        try {
+            double a = Double.parseDouble(t1.getText());
+            double b = Double.parseDouble(t2.getText());
+            double result = 0;
+
+            if (e.getSource() == add) {
+                result = a + b;
+            } else if (e.getSource() == sub) {
+                result = a - b;
+            } else if (e.getSource() == mul) {
+                result = a * b;
+            } else if (e.getSource() == div) {
+                if (b == 0) {
+                    JOptionPane.showMessageDialog(this, "Cannot divide by zero");
+                    return;
+                }
+                result = a / b;
+            }
+
+            t3.setText(String.valueOf(result));
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numbers");
+        }
+    }
+
+    public static void main(String[] args) {
+        new SimpleCalculator();
+    }
+}
