@@ -1,0 +1,32 @@
+package com.validation;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter Age: ");
+            int age = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Department: ");
+            String dept = sc.nextLine();
+
+            Student s = new Student(age, dept);
+            s.display();
+
+        } catch (InvalidAgeException e) {
+            System.out.println("Age Error: " + e.getMessage());
+        } catch (InvalidDepartmentException e) {
+            System.out.println("Department Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("General Error: " + e.getMessage());
+        }
+
+        sc.close();
+    }
+}
