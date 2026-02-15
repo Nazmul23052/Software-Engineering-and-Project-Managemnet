@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.quiz.QuizController">
+
+    <TextField fx:id="nameField" promptText="Enter Your Name"/>
+
+    <Label fx:id="questionLabel" text="Question will appear here"/>
+    <RadioButton fx:id="opt1"/>
+    <RadioButton fx:id="opt2"/>
+    <RadioButton fx:id="opt3"/>
+    <RadioButton fx:id="opt4"/>
+
+    <Label fx:id="timerLabel" text="Time: 15"/>
+    <Label fx:id="resultLabel"/>
+
+    <Button text="Next" onAction="#nextQuestion"/>
+    <Button text="Restart" onAction="#restartGame"/>
+    <Button text="Exit" onAction="#exitGame"/>
+
+</VBox>
