@@ -1,0 +1,9 @@
+ExceptionValidationProject/
+│
+├── src/
+│   ├── module-info.java
+│   └── com/validation/
+│       ├── Main.java
+│       ├── Student.java
+│       ├── InvalidAgeException.java
+│       └── InvalidDepartmentException.java
