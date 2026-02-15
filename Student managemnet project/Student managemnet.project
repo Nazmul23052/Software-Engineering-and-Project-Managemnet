@@ -1,0 +1,140 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class StudentManagementSystem {
+
+    private ArrayList<Student> students = new ArrayList<>();
+    private final String ADMIN_PASSWORD = "admin123";
+    private Scanner scanner = new Scanner(System.in);
+
+    public void start() {
+        while (true) {
+            System.out.println("\n===== STUDENT MANAGEMENT SYSTEM =====");
+            System.out.println("1. Admin Login");
+            System.out.println("2. Student Login");
+            System.out.println("3. Exit");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> adminLogin();
+                case 2 -> studentLogin();
+                case 3 -> {
+                    System.out.println("Exiting...");
+                    return;
+                }
+                default -> System.out.println("Invalid choice!");
+            }
+        }
+    }
+
+    private void adminLogin() {
+        System.out.print("Enter Admin Password: ");
+        String password = scanner.nextLine();
+
+        if (password.equals(ADMIN_PASSWORD)) {
+            adminMenu();
+        } else {
+            System.out.println("Wrong password!");
+        }
+    }
+
+    private void adminMenu() {
+        while (true) {
+            System.out.println("\n===== ADMIN MENU =====");
+            System.out.println("1. Add Student");
+            System.out.println("2. View All Students");
+            System.out.println("3. Search Student");
+            System.out.println("4. Delete Student");
+            System.out.println("5. Logout");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> addStudent();
+                case 2 -> viewStudents();
+                case 3 -> searchStudent();
+                case 4 -> deleteStudent();
+                case 5 -> { return; }
+                default -> System.out.println("Invalid choice!");
+            }
+        }
+    }
+
+    private void addStudent() {
+        System.out.print("Enter ID: ");
+        String id = scanner.nextLine();
+
+        System.out.print("Enter Name: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter Age: ");
+        int age = scanner.nextInt();
+
+        scanner.nextLine();
+        System.out.print("Enter Course: ");
+        String course = scanner.nextLine();
+
+        System.out.print("Enter GPA: ");
+        double gpa = scanner.nextDouble();
+
+        scanner.nextLine();
+        System.out.print("Set 4-digit PIN: ");
+        String pin = scanner.nextLine();
+
+        students.add(new Student(id, name, age, course, gpa, pin));
+        System.out.println("Student added successfully!");
+    }
+
+    private void viewStudents() {
+        if (students.isEmpty()) {
+            System.out.println("No students found!");
+            return;
+        }
+
+        for (Student s : students) {
+            System.out.println("---------------------");
+            s.displayDetails();
+        }
+    }
+
+    private void searchStudent() {
+        System.out.print("Enter Student ID: ");
+        String id = scanner.nextLine();
+
+        for (Student s : students) {
+            if (s.getStudentId().equals(id)) {
+                s.displayDetails();
+                return;
+            }
+        }
+        System.out.println("Student not found!");
+    }
+
+    private void deleteStudent() {
+        System.out.print("Enter Student ID to delete: ");
+        String id = scanner.nextLine();
+
+        students.removeIf(s -> s.getStudentId().equals(id));
+        System.out.println("Student deleted if existed.");
+    }
+
+    private void studentLogin() {
+        System.out.print("Enter Student ID: ");
+        String id = scanner.nextLine();
+
+        System.out.print("Enter PIN: ");
+        String pin = scanner.nextLine();
+
+        for (Student s : students) {
+            if (s.getStudentId().equals(id) && s.getPin().equals(pin)) {
+                System.out.println("\n===== STUDENT PROFILE =====");
+                s.displayDetails();
+                return;
+            }
+        }
+        System.out.println("Invalid ID or PIN!");
+    }
+}
