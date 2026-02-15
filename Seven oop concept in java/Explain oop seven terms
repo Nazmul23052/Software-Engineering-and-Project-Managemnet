@@ -1,0 +1,236 @@
+1. Classes and Objects
+Class: A blueprint or template for creating objects. It defines properties (fields) and behaviors (methods).
+Object: An instance of a class. Objects contain data (fields) and functions (methods) that operate on the data.
+Example:
+
+class Car {
+    String color;
+    String model;
+
+    void drive() {
+        System.out.println("The car is driving.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car1 = new Car();  // Object instantiation
+        car1.color = "Red";
+        car1.model = "Toyota";
+        car1.drive();
+    }
+}
+2. Encapsulation
+Encapsulation is the concept of restricting access to the internal state of an object and exposing only what is necessary.
+It involves using access modifiers (e.g., private, public, protected) and providing getter and setter methods to access or modify private fields.
+Example:
+
+class Employee {
+    private String name;  // Private field
+
+    // Getter method
+    public String getName() {
+        return name;
+    }
+
+    // Setter method
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+3. Inheritance
+Inheritance allows one class (subclass) to inherit the fields and methods of another class (superclass).
+It helps in reusing code and creating a hierarchical relationship between classes.
+In Java, inheritance is implemented using the extends keyword.
+class Animal {
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();  // Inherited method
+        dog.bark(); // Method from Dog
+    }
+}
+4. Polymorphism
+Polymorphism means "many shapes." It allows an object to take many forms, enabling methods to behave differently depending on the object that calls them.
+It can be achieved through:
+Method Overloading (Compile-time polymorphism)
+Method Overriding (Runtime polymorphism)
+Example (Method Overloading):
+
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(2, 3)); // Integer addition
+        System.out.println(calc.add(2.5, 3.7)); // Double addition
+    }
+}
+Example (Method Overriding):
+
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Animal();
+        animal.sound();  // Output: Animal makes a sound
+
+        Dog dog = new Dog();
+        dog.sound();  // Output: Dog barks
+    }
+}
+5. Abstraction
+Abstraction is the process of hiding the implementation details and showing only the essential features of an object.
+It can be achieved using abstract classes and interfaces.
+Abstract class: A class that cannot be instantiated and often contains abstract methods (methods without implementation).
+Interface: A contract that a class must follow, which specifies methods that must be implemented.
+Example (Abstract Class):
+
+abstract class Animal {
+    abstract void sound();  // Abstract method
+
+    void sleep() {
+        System.out.println("Animal is sleeping");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound();  // Dog barks
+        dog.sleep();  // Animal is sleeping
+    }
+}
+Example (Interface):
+
+interface Animal {
+    void sound();  // Abstract method
+}
+
+class Dog implements Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound();  // Dog barks
+    }
+}
+6. Composition
+Composition is a concept where one class contains an object of another class, implying a "has-a" relationship between the two.
+It allows creating complex objects by combining simpler objects.
+Example:
+
+class Engine {
+    void start() {
+        System.out.println("Engine starting...");
+    }
+}
+
+class Car {
+    private Engine engine;  // Composition: Car has an Engine
+
+    Car() {
+        engine = new Engine();
+    }
+
+    void startCar() {
+        engine.start();
+        System.out.println("Car is ready to go!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.startCar();  // Engine starting... Car is ready to go!
+    }
+}
+7. Association
+Association defines the relationship between two or more objects. There are various types of associations:
+One-to-One: One object is related to exactly one object of another class.
+One-to-Many: One object is related to multiple objects of another class.
+Many-to-Many: Multiple objects are related to multiple objects of another class.
+Example (One-to-Many Association):
+
+class Department {
+    String name;
+
+    Department(String name) {
+        this.name = name;
+    }
+}
+
+class Employee {
+    String name;
+    Department department;
+
+    Employee(String name, Department department) {
+        this.name = name;
+        this.department = department;
+    }
+
+    void printDetails() {
+        System.out.println(name + " works in " + department.name + " department.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Department dept = new Department("IT");
+        Employee emp1 = new Employee("John", dept);
+        Employee emp2 = new Employee("Alice", dept);
+
+        emp1.printDetails();
+        emp2.printDetails();
+    }
+}
+Summary of Key Concepts in Java OOP:
+Classes and Objects: The basic building blocks of OOP.
+Encapsulation: Hiding the internal details and exposing only what is necessary.
+Inheritance: Extending a class to reuse code and create relationships.
+Polymorphism: Using the same method or class in different ways (method overloading and overriding).
+Abstraction: Hiding unnecessary details and focusing on high-level functionality using abstract classes or interfaces.
+Composition: Building complex objects by including other objects.
+Association: Defining relationships between classes and their instances.
