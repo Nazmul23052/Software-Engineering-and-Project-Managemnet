@@ -1,0 +1,48 @@
+Run in NetBeans
+Step 1:
+
+File → New Project
+Java with Ant → Web Application
+
+Step 2:
+
+Choose Tomcat server.
+
+Step 3:
+
+Right-click Source Packages → New → Servlet
+
+Name: HelloServlet
+
+Step 4:
+
+Modify doGet method:
+
+response.getWriter().println("<h1>Hello World</h1>");
+
+Step 5:
+
+Right-click Project → Run
+
+Browser opens automatically.
+
+Alternative (Without Annotation):
+
+If annotation doesn't work, use web.xml
+
+web.xml
+<web-app>
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>HelloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+Expected Output:
+
+Hello World from Servlet!
