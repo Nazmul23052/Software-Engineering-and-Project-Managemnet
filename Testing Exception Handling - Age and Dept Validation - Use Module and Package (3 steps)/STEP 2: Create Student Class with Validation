@@ -1,0 +1,40 @@
+package com.validation;
+
+public class Student {
+
+    private int age;
+    private String department;
+
+    public Student(int age, String department)
+            throws InvalidAgeException, InvalidDepartmentException {
+
+        validateAge(age);
+        validateDepartment(department);
+
+        this.age = age;
+        this.department = department;
+    }
+
+    private void validateAge(int age) throws InvalidAgeException {
+        if (age < 18 || age > 25) {
+            throw new InvalidAgeException("Age must be between 18 and 25.");
+        }
+    }
+
+    private void validateDepartment(String department)
+            throws InvalidDepartmentException {
+
+        if (!(department.equalsIgnoreCase("CSE") ||
+              department.equalsIgnoreCase("ECE") ||
+              department.equalsIgnoreCase("IT"))) {
+
+            throw new InvalidDepartmentException("Department must be CSE, ECE, or IT.");
+        }
+    }
+
+    public void display() {
+        System.out.println("Valid Student Record Created");
+        System.out.println("Age: " + age);
+        System.out.println("Department: " + department);
+    }
+}
